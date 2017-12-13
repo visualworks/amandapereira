@@ -1,0 +1,227 @@
+@import "../framework/css/mixins.less";
+@import "../css/theme-mixins.less"; 
+/* Browser Resets
+*********************************/
+.yeahslider-container, .yeahslider{
+	a:active,
+	a:focus  {outline: none;}
+}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.yeahslider {
+	margin: 0; 
+	padding: 0;
+	clear: both;
+	.slides{
+		padding:0;
+		li {
+			position:relative;
+			display: none; 
+			-webkit-backface-visibility: hidden;
+			.caption{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				margin: 0;
+				padding: 5px 10px;
+				.background-color2rgba(#000, #555, .5);
+				color:#FFF;
+			}
+			.slide-count{
+				position:absolute;
+				right:0;
+				bottom:0;
+				padding: 5px 10px;
+				color:#FFF;
+			}
+		} /* Hide the slides before the JS is loaded. Avoids image jumping */
+
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+	&.news-scroller{
+		overflow: visible;	
+	}
+	
+	.slides,
+	.yeahslider-control-nav,
+	.yeahslider-direction-nav {
+		margin: 0; 
+		padding: 0; 
+		list-style: none;
+	}
+}
+/* Clearfix for the .slides element */
+.slides:after {
+	content: "\0020"; 
+	display: block; 
+	clear: both; 
+	visibility: hidden; 
+	line-height: 0; 
+	height: 0;
+}
+html[xmlns] .slides {
+	display: block;
+}
+* html .slides {
+	min-height: 1%;
+}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+	display: block;
+}
+
+/* FlexSlider Default Theme
+*********************************/
+.yeahslider { 
+	margin: 0 ; 
+	position: relative; 
+	zoom: 1;
+}
+.yeahslider-viewport {
+	max-height: 2000px; 
+	.transition(all 1s ease); 
+	.loading & {
+		max-height: 300px;
+	}
+}
+.yeahslider .slides { zoom: 1; }
+.carousel li { margin-right: 5px; }
+
+.yeahslider-pauseplay a,
+.yeahslider-direction-nav a{
+	.transition(all .3s ease);
+	display: block;
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	.opacity(0);
+	cursor: pointer;
+	color: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	&:before {
+	}
+}
+
+/* Direction Nav */
+.yeahslider-direction-nav {
+	*height: 0;
+	a {
+		
+	}
+	.yeahslider-prev {
+		left: -50px;
+	}
+	.yeahslider-next {
+		right: -50px;
+	}
+	.yeahslider-disabled { 
+		
+		.opacity(0) !important;
+		cursor: default; 
+	}
+}
+.yeahslider { 
+	&:hover, &.hover{
+		.yeahslider-prev { .opacity(.7); left: 0; }
+		.yeahslider-next { .opacity(.7); right: 0; }
+		.yeahslider-pauseplay a{ .opacity(.7); right: 0; }
+		.yeahslider-next:hover, .yeahslider-prev:hover,
+		.yeahslider-pauseplay a:hover { 
+			.opacity(.9);
+			visibility:visible;
+		}
+	}
+}
+
+/* Pause/Play */
+.yeahslider-pauseplay a{
+	position:absolute; 
+	top:50%;
+	left:0;
+	right: 0;
+	text-align: center;
+	height: 0;
+	z-index:2;
+	span {
+		text-transform: capitalize;
+	}
+	&:hover {}
+	&:before {}	
+	&.yeahslider-play:before { }
+	
+	
+}
+
+/* Control Nav */
+.yeahslider-control-nav {
+	z-index: 3;
+	width: 100%;
+	position: absolute;
+	bottom: 15px;
+	text-align: center;
+	li {
+		margin: 0 6px;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+}
+
+.yeahslider-control-paging li a {
+	width: 11px;
+	height: 11px;
+	display: block;
+	background: #666;
+	background: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+	text-indent: -9999px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-o-border-radius: 20px;
+	border-radius: 20px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+	&:hover {
+		background: #333;
+		background: rgba(0, 0, 0, 0.7);
+	}
+	&.yeahslider-active {
+		background: #000;
+		background: rgba(0, 0, 0, 0.9);
+		cursor: default;
+	}
+}
+.yeahslider-control-thumbs {
+	margin: 5px 0 0;
+	position: static;
+	overflow: hidden;
+	li {
+		width: 25%;
+		float: left;
+		margin: 0;
+	}
+	img {
+		width: 100%;
+		display: block;
+		opacity: .7;
+		cursor: pointer;
+		&:hover {
+			.opacity(1);
+		}
+	}
+	
+	.yeahslider-active {
+		
+		.opacity(1);
+		cursor: default;
+	}
+}

@@ -1,0 +1,364 @@
+blockquote p{
+	.em2px(18px, @baseFontSize);
+}
+.form-control,
+.btn,
+.navbar,
+.alert,
+.list-group {
+	.border-radius(@borderRadius);
+}
+.form-control:focus {
+	border-color: @primaryColor;
+	.box-shadow( ~"inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px @{primaryColor}" );
+}
+/**
+ * Button
+ */
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    .box-shadow(none ~"!important");
+}
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #fafafa) {
+	background-repeat: repeat-x;
+	background-color: @btn-color;
+	border-color: @btn-color;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active  {
+		background-color: @secondaryColor;
+		border-color:@secondaryColor;
+		color: @whiteColor !important;
+		i{
+
+			color: @whiteColor !important;
+		}
+	}
+
+}
+
+// Common styles
+.btn {
+	// Remove the gradient for the pressed/active state
+	&:active,
+	&.active {
+		background-image: none;
+	}
+}
+
+// Apply the mixin to the buttons
+.btn-default, [type="button"], button, .button, [type="submit"].btn-default { 
+	background-color: @defaultColor;
+	color: @textColor !important;
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+	&:hover, &:focus, &:active, &.active{
+		background-color: @secondaryColor;
+		border-color:@secondaryColor;
+		color: @whiteColor !important;
+		i{
+
+			color: @whiteColor !important;
+		}
+	}
+}
+.btn-primary, [type="submit"]{
+	.btn-styles(@primaryColor);
+	color: @whiteColor !important;
+}
+.btn-secondary, [type="reset"]{
+	.btn-styles(@secondaryColor);
+}
+
+.btn-success { .btn-styles(@successColor); }
+.btn-info    { .btn-styles(@infoColor); }
+.btn-warning { .btn-styles(@warningColor); }
+.btn-danger  { .btn-styles(@dangerColor); }
+.btn-link{	
+	color: @primaryColor !important;
+	background: none;
+	border-color: transparent;
+	&:hover{
+		color: @secondaryColor !important;
+	}
+}
+
+.btn-primary, [type="submit"],
+.btn-secondary, [type="reset"],
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger{
+	color: @whiteColor !important;
+	&:hover, &:focus, &:active, &.active{
+		color: @whiteColor !important;
+	}
+}
+input,
+button{
+	&.btn-xs[type="submit"],
+	&.btn-xs[type="reset"]{
+		padding: 1px 5px;
+		.em2px(12px, @baseFontSize);
+		line-height: 1.5;
+	}
+	&.btn-sm[type="submit"],
+	&.btn-sm[type="reset"]{
+		padding: 5px 10px;
+		.em2px(12px, @baseFontSize);
+		line-height: 1.5;
+	}
+	&.btn-lg[type="reset"]{
+		padding: 10px 16px;
+		.em2px(18px, @baseFontSize);
+		line-height: 1.33;
+		
+	}
+}
+
+.label-primary{
+	background: @primaryColor;
+}
+.label-success{
+	background: @successColor;
+}
+.label-info{
+	background: @infoColor;
+}
+.label-warning{
+	background: @warningColor;
+}
+.label-danger{
+	background: @dangerColor;
+}
+
+/**
+ * Dropdown
+ */
+.dropdown-menu > {
+	li > a:hover,
+	li > a:focus {
+		background: @grayBgColor;
+	}
+
+	.active > a,
+	.active > a:hover,
+	.active > a:focus {
+		background: @primaryColor;
+	}
+}
+.form-group .control-label{
+	color:@boldColor;
+}
+.form-control{ 
+	.has-success &{
+		border-color: mix(#FFF, @successColor,50%);
+		&:focus{
+			border-color: @successColor;
+			-webkit-box-shadow: 0 0 6px @successColor;
+		}
+	}	
+	.has-info &{
+		border-color: mix(#FFF, @infoColor,50%);
+		&:focus{
+			border-color: @infoColor;
+			-webkit-box-shadow: 0 0 6px @infoColor;
+		}
+	}
+	
+	.has-error &{
+		border-color: mix(#FFF, @dangerColor,50%);
+		&:focus{
+			border-color: @dangerColor;
+			-webkit-box-shadow: 0 0 6px @dangerColor;
+		}
+	}
+	
+	.has-warning &{
+		border-color: mix(#FFF, @warningColor,15%);
+		&:focus{
+			border-color: @warningColor;
+			-webkit-box-shadow: 0 0 6px @warningColor;
+		}
+	}
+
+}
+/**
+ * Navbar
+ */
+.navbar-default {
+	background: @grayBgColor;
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+}
+.navbar-default .navbar-nav > .active > a {
+	background: mix(#000, @grayBgColor, 5%);
+	.box-shadow(none);
+}
+.navbar-inverse {
+	background: @secondaryColor;
+	border-color:@secondaryColor;
+}
+.navbar-inverse .navbar-nav > .active > a {
+}
+.nav-pills > li.active > a, 
+.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a:focus{
+	background: @primaryColor;
+}
+	
+/**
+ * Alert
+ */
+.alert {
+	background-color: @grayBgColor;
+	border-color: #ddd;
+	color:@textColor;
+}
+.alert-success,
+div.wpcf7-mail-sent-ok{
+	background-color: mix(#FFF, @successColor,85%);
+	border-color: mix(#FFF, @successColor,50%);
+}
+.alert-info,
+div.wpcf7-spam-blocked{
+	background-color: mix(#FFF, @infoColor,85%);
+	border-color: mix(#FFF, @infoColor,50%);
+}
+.alert-warning,
+div.wpcf7-validation-errors {
+	background-color: mix(#FFF, @warningColor,85%);
+	border-color: mix(#FFF, @warningColor,50%);
+}
+.alert-danger,
+div.wpcf7-mail-sent-ng{
+	background-color: mix(#FFF, @dangerColor,85%);
+	border-color: mix(#FFF, @dangerColor,50%);
+}
+/**
+ * Contextual colors
+ */
+.text-muted{
+
+}
+.text-muted{ color: @grayColor; }
+.text-primary{ color: @primaryColor; }
+.text-secondary{ color: @secondaryColor; }
+.text-success{ color: @successColor; }
+.text-info{ color: @infoColor; }
+.text-warning{ color: @warningColor; }
+.text-danger{ color: @dangerColor; } 
+/**
+ * Progress bar
+ */
+.progress {				background-color:@grayBgColor; height: 24px;}
+.progress-bar {			background-color:@primaryColor; text-align: left; text-indent: 1em; line-height: 24px;}
+.progress-bar-secondary {background-color:@secondaryColor; }
+.progress-bar-success {	background-color:@successColor; }
+.progress-bar-info {	background-color:@infoColor; }
+.progress-bar-warning {	background-color:@warningColor;}
+.progress-bar-danger {	background-color:@dangerColor;}
+/**
+ * List group
+ */
+.list-group-item{
+	p:last-child{
+		margin-bottom: 5px;
+	}
+}
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus {
+	background-color: @primaryColor;
+	border-color: @primaryColor;
+	color:@whiteColor; 
+}
+.list-group-item{
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+	&:first-child{
+		.border-radius(@borderRadius @borderRadius 0 0);
+	}
+	&:last-child{
+		.border-radius(0 0 @borderRadius @borderRadius);
+	}
+}
+/**
+ * List group
+ */
+.panel-footer{
+	background: @grayBgColor;
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+}
+.panel-default{
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+	> .panel-heading {
+		background-color: @grayBgColor;
+		border-color: @grayBorderColor;
+		border-color: @grayBorderColorTransparent;
+	}
+}
+.panel-primary{
+	border-color:@primaryColor;
+	> .panel-heading {
+		background:@primaryColor;
+		border-color:@primaryColor;
+	}
+}
+.panel-secondary{
+	border-color:@secondaryColor;
+	> .panel-heading {
+		background:@secondaryColor;
+		border-color:@secondaryColor;
+	}
+}
+.panel-success{
+	border-color: mix(#FFF, @successColor,50%);
+	> .panel-heading {
+		background-color: mix(#FFF, @successColor,85%);
+		border-color: mix(#FFF, @successColor,50%);
+	}
+}
+.panel-info{
+	border-color: mix(#FFF, @infoColor,50%);
+	> .panel-heading {
+		background-color: mix(#FFF, @infoColor,85%);
+		border-color: mix(#FFF, @infoColor,50%);
+	}
+}
+.panel-warning{
+	border-color: mix(#FFF, @warningColor,50%);
+	> .panel-heading {
+		background-color: mix(#FFF, @warningColor,85%);
+		border-color: mix(#FFF, @warningColor,50%);
+	}
+}
+.panel-danger{
+	border-color: mix(#FFF, @dangerColor,50%);
+	> .panel-heading {
+		background-color: mix(#FFF, @dangerColor,85%);
+		border-color: mix(#FFF, @dangerColor,50%);
+	}
+}
+/**
+ * Primary color
+ */
+.well{
+	
+	background: @grayBgColor;
+	border-color: @grayBorderColor;
+	border-color: @grayBorderColorTransparent;
+}
